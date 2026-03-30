@@ -435,8 +435,12 @@ footer {
 }
 
 @media (max-width: 500px) {
-    .header-content .btn { padding: 10px 20px; font-size: 0.9rem; }
-    .logo-text { font-size: 1.4rem; }
+    header { padding: 12px 0; }
+    .logo-seal { width: 44px; height: 44px; }
+    .logo-text { font-size: 1.35rem; }
+    .logo { gap: 10px; }
+    .header-content { gap: 10px; }
+    .header-content .btn { padding: 8px 16px; font-size: 0.85rem; }
     .hero-text h1 { font-size: 1.9rem; }
     .hero-stage { width: 100%; min-height: 360px; }
     .hero-card-main { width: 76%; right: 2%; }
@@ -449,4 +453,65 @@ footer {
     .product-name { font-size: 1.9rem; }
     .social-links { width: 100%; }
     .social-link { width: 100%; }
+}
+
+@media (max-width: 480px) {
+    .logo-seal { width: 42px; height: 42px; }
+    .logo-text { font-size: 1.3rem; }
+    .logo { gap: 8px; }
+    .header-content { gap: 8px; }
+    .hero-text h1 { font-size: 1.85rem; }
+    .hero-stage { width: 100%; min-height: 340px; }
+    .hero-brand { width: 130px; }
+}
+
+@media (max-width: 460px) {
+    header { padding: 10px 0; }
+    .logo-seal { width: 40px; height: 40px; }
+    .logo-text { font-size: 1.25rem; }
+    .logo { gap: 8px; }
+    .header-content .btn { padding: 7px 14px; font-size: 0.8rem; }
+    .hero-text h1 { font-size: 1.8rem; }
+    .hero-subtitle { font-size: 1rem; }
+    .hero-stage { min-height: 320px; }
+    .hero-badge { font-size: 0.85rem; padding: 6px 16px; }
+}
+
+@media (max-width: 440px) {
+    .logo-text { font-size: 1.2rem; }
+    .logo { gap: 6px; }
+    .header-content { gap: 6px; }
+    .header-content .btn { padding: 6px 12px; font-size: 0.78rem; }
+    .hero-text h1 { font-size: 1.7rem; }
+    .hero-content { gap: 32px; }
+    .hero-stage { min-height: 300px; }
+}
+
+@media (max-width: 420px) {
+    .logo-seal { width: 38px; height: 38px; }
+    .logo-text { font-size: 1.15rem; }
+    .hero-text h1 { font-size: 1.6rem; }
+    .hero-stage { min-height: 280px; }
+}
+
+@media (max-width: 400px) {
+    .container { padding: 0 12px; }
+    .logo { gap: 4px; }
+    .header-content { gap: 4px; }
+    .header-content .btn { padding: 5px 10px; font-size: 0.72rem; }
+    .hero-text h1 { font-size: 1.5rem; }
+    .hero-content { gap: 24px; }
+}
+
+@media (max-width: 380px) {
+    .hero-text h1 { font-size: 1.4rem; }
+    .hero-subtitle { font-size: 0.9rem; }
+    .hero-stage { min-height: 260px; }
+    .hero-brand { width: 110px; }
+}
+
+@media (max-width: 360px) {
+    .hero { padding: 30px 0; }
+    .hero-text h1 { font-size: 1.3rem; }
+    .hero-content { gap: 20px; }
 }
