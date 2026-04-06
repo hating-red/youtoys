@@ -32,7 +32,7 @@
         <span class="logo-seal"><img src="images/logo-symbol.png" alt=""></span>
         <span class="logo-text">YOUTOYS</span>
       </a>
-      <a href="https://t.me/anbagaewa" class="btn" target="_blank" rel="noopener">Создать медведя</a>
+      <a href="#order-modal" class="btn" data-open-order>Создать медведя</a>
     </div>
   </header>
 
@@ -45,7 +45,7 @@
             остаются навсегда.</p>
           <p class="description">Каждая игрушка создается с заботой и вниманием к деталям, чтобы стать уникальным подарком для Вашего близкого человека.</p>
 
-          <a href="https://t.me/anbagaewa" class="btn btn-lg hero-cta" target="_blank" rel="noopener">
+          <a href="#order-modal" class="btn btn-lg hero-cta" data-open-order>
             <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor">
               <path 
                 d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.295-.6.295l.213-3.053 5.56-5.023c.242-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.64-.203-.658-.64.135-.954l11.566-4.458c.538-.196 1.006.128.828.94z" />
@@ -106,8 +106,7 @@
             <h3 class="product-name">Ютик</h3>
             <p class="product-description">Мягкий медвежонок, который хранит ваши эмоции и голос. Его объятия согревают
               и создают воспоминания, оставаясь с вами на долгие годы.</p>
-            <a href="https://t.me/anbagaewa?text=Хочу купить Ютика" class="btn product-cta" target="_blank"
-              rel="noopener">Купить Ютика</a>
+            <a href="#order-modal" class="btn product-cta" data-bear="Ютик" data-open-order>Купить Ютика</a>
           </article>
 
           <article class="product-card">
@@ -126,8 +125,7 @@
             <h3 class="product-name">Юта</h3>
             <p class="product-description">Нежная медведица, в которой оживают ваши воспоминания. Мягкая и ласковая, она
               станет уникальным подарком и хранителем радостных моментов.</p>
-            <a href="https://t.me/anbagaewa?text=Хочу купить Юту" class="btn product-cta" target="_blank"
-              rel="noopener">Купить Юту</a>
+            <a href="#order-modal" class="btn product-cta" data-bear="Юта" data-open-order>Купить Юту</a>
           </article>
         </div>
       </div>
@@ -136,7 +134,7 @@
     <section class="telegram-section" aria-labelledby="telegram-title">
       <div class="container">
         <h2 id="telegram-title">Свяжитесь с нами</h2>
-        <p class="note">Вы можете связаться с нашим менеджером по любому интересующему вас вопросу</p>
+        <p class="note">Также вы можете связаться с нами через телеграмм</p>
         <a href="https://t.me/anbagaewa" class="telegram-cta" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" fill="currentColor">
             <path
@@ -184,6 +182,366 @@
       <p class="footer-copyright">© 2026 YouToys. Все права защищены.</p>
     </div>
   </footer>
+
+  <div class="order-modal" id="order-modal" aria-hidden="true">
+    <div class="order-modal-backdrop" data-close-order></div>
+    <div class="order-panel" role="dialog" aria-modal="true" aria-labelledby="order-title">
+      <button type="button" class="order-close" aria-label="Закрыть форму" data-close-order>&times;</button>
+
+      <div class="order-shell">
+        <div class="order-copy">
+          <h2 id="order-title">Создайте своего медведя</h2>
+          <p class="order-lead">Оставьте имя и контакт, выберите Ютика или Юту и добавьте аудио: запишите голос прямо на сайте или прикрепите готовый файл.</p>
+          <div class="order-points">
+            <div class="order-point">Имя и контакт</div>
+            <div class="order-point">Запись или загрузка аудио</div>
+          </div>
+        </div>
+
+        <form class="order-form" id="bear-form">
+          <div class="form-grid">
+            <label class="field">
+              <span>Имя</span>
+              <input type="text" name="name" placeholder="Как к вам обращаться" required>
+            </label>
+
+            <label class="field">
+              <span>Контакт</span>
+              <input type="text" name="contact" placeholder="Телефон или Telegram" required>
+            </label>
+          </div>
+
+          <label class="field">
+            <span>Медведь</span>
+            <select name="bear" id="bear-select">
+              <option value="Ютик">Ютик</option>
+              <option value="Юта">Юта</option>
+            </select>
+          </label>
+
+          <div class="audio-card">
+            <div class="audio-card-header">
+              <div>
+                <h3>Аудио для игрушки</h3>
+                <p>Запишите голос прямо здесь или прикрепите готовый файл.</p>
+              </div>
+            </div>
+
+            <div class="audio-actions">
+              <button type="button" class="btn audio-action" id="record-toggle">Записать аудио</button>
+              <label class="btn btn-secondary audio-action" for="audio-upload">Прикрепить аудио</label>
+              <input type="file" id="audio-upload" accept="audio/*" hidden>
+            </div>
+
+            <p class="audio-status" id="audio-status">Аудио пока не добавлено</p>
+
+            <div class="audio-preview" id="audio-preview" hidden>
+              <audio id="audio-player" controls></audio>
+              <div class="audio-preview-actions">
+                <button type="button" class="btn btn-secondary" id="redo-audio">Перезаписать</button>
+              </div>
+            </div>
+          </div>
+
+          <p class="form-status" id="form-status" hidden></p>
+          <button type="submit" class="btn btn-lg form-submit" id="form-submit">Отправить заявку на Ютика</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <iframe
+    name="apps-script-submit-frame"
+    id="apps-script-submit-frame"
+    class="visually-hidden"
+    tabindex="-1"
+    aria-hidden="true"></iframe>
+
+  <script>
+    (() => {
+      const body = document.body;
+      const modal = document.getElementById('order-modal');
+      const openButtons = document.querySelectorAll('[data-open-order]');
+      const closeButtons = document.querySelectorAll('[data-close-order]');
+      const form = document.getElementById('bear-form');
+      const bearSelect = document.getElementById('bear-select');
+      const submitButton = document.getElementById('form-submit');
+      const productLinks = document.querySelectorAll('[data-bear]');
+      const audioUpload = document.getElementById('audio-upload');
+      const audioPlayer = document.getElementById('audio-player');
+      const audioPreview = document.getElementById('audio-preview');
+      const audioStatus = document.getElementById('audio-status');
+      const redoAudioButton = document.getElementById('redo-audio');
+      const recordToggle = document.getElementById('record-toggle');
+      const formStatus = document.getElementById('form-status');
+      const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyBQOEs-95BvpLLVUjkRkygYO1feqQHwIVAag2Qcxbm2PEdaIBfTvegEUSisy5saY3L1w/exec';
+
+      let mediaRecorder;
+      let recordedChunks = [];
+      let currentAudioUrl = '';
+      let currentAudioFile = null;
+      let stream;
+      let isRecording = false;
+      const MAX_AUDIO_SIZE_BYTES = 4 * 1024 * 1024;
+
+      const fileToBase64 = (file) => new Promise((resolve, reject) => {
+        const reader = new FileReader();
+
+        reader.onload = () => {
+          const result = String(reader.result || '');
+          const commaIndex = result.indexOf(',');
+          resolve(commaIndex >= 0 ? result.slice(commaIndex + 1) : result);
+        };
+
+        reader.onerror = () => {
+          reject(new Error('Не удалось прочитать аудиофайл'));
+        };
+
+        reader.readAsDataURL(file);
+      });
+
+      const submitViaHiddenForm = (payload) => new Promise((resolve) => {
+        const iframe = document.getElementById('apps-script-submit-frame');
+        const tempForm = document.createElement('form');
+        let completed = false;
+
+        tempForm.method = 'POST';
+        tempForm.action = APPS_SCRIPT_URL;
+        tempForm.target = 'apps-script-submit-frame';
+        tempForm.style.display = 'none';
+
+        Object.entries(payload).forEach(([key, value]) => {
+          const input = document.createElement('input');
+          input.type = 'hidden';
+          input.name = key;
+          input.value = value == null ? '' : String(value);
+          tempForm.appendChild(input);
+        });
+
+        const finish = () => {
+          if (completed) return;
+          completed = true;
+          iframe.removeEventListener('load', onLoad);
+          window.clearTimeout(timeoutId);
+          tempForm.remove();
+          resolve();
+        };
+
+        const onLoad = () => {
+          finish();
+        };
+
+        const timeoutId = window.setTimeout(() => {
+          finish();
+        }, 2500);
+
+        iframe.addEventListener('load', onLoad);
+        document.body.appendChild(tempForm);
+        tempForm.submit();
+      });
+
+      const openModal = (bearName = bearSelect.value) => {
+        updateBearState(bearName);
+        formStatus.hidden = true;
+        modal.classList.add('is-open');
+        modal.setAttribute('aria-hidden', 'false');
+        body.classList.add('modal-open');
+      };
+
+      const closeModal = () => {
+        modal.classList.remove('is-open');
+        modal.setAttribute('aria-hidden', 'true');
+        body.classList.remove('modal-open');
+      };
+
+      const updateBearState = (bearName) => {
+        bearSelect.value = bearName;
+        if (bearName == 'Юта') submitButton.textContent = 'Отправить заявку на Юту';
+        else submitButton.textContent = 'Отправить заявку на Ютика';
+      };
+
+      const setFormStatus = (message, type) => {
+        formStatus.hidden = false;
+        formStatus.textContent = message;
+        formStatus.className = 'form-status';
+        if (type) {
+          formStatus.classList.add('is-' + type);
+        }
+      };
+
+      const clearAudio = () => {
+        if (currentAudioUrl) {
+          URL.revokeObjectURL(currentAudioUrl);
+        }
+        currentAudioUrl = '';
+        currentAudioFile = null;
+        audioPlayer.removeAttribute('src');
+        audioPlayer.load();
+        audioPreview.hidden = true;
+        audioStatus.textContent = 'Аудио пока не добавлено';
+        audioUpload.value = '';
+      };
+
+      const showAudio = (file, label) => {
+        if (currentAudioUrl) {
+          URL.revokeObjectURL(currentAudioUrl);
+        }
+        currentAudioFile = file;
+        currentAudioUrl = URL.createObjectURL(file);
+        audioPlayer.src = currentAudioUrl;
+        audioPreview.hidden = false;
+        audioStatus.textContent = label;
+      };
+
+      const stopStream = () => {
+        if (stream) {
+          stream.getTracks().forEach((track) => track.stop());
+          stream = null;
+        }
+      };
+
+      openButtons.forEach((button) => {
+        button.addEventListener('click', (event) => {
+          event.preventDefault();
+          openModal(button.dataset.bear || 'Ютик');
+        });
+      });
+
+      closeButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+          closeModal();
+        });
+      });
+
+      productLinks.forEach((link) => {
+        link.addEventListener('click', () => {
+          updateBearState(link.dataset.bear);
+        });
+      });
+
+      bearSelect.addEventListener('change', () => {
+        updateBearState(bearSelect.value);
+        window.setTimeout(() => {
+          bearSelect.blur();
+        }, 0);
+      });
+
+      audioUpload.addEventListener('change', () => {
+        const [file] = audioUpload.files;
+        if (!file) return;
+        showAudio(file, 'Прикреплён файл: ' + file.name);
+      });
+
+      redoAudioButton.addEventListener('click', () => {
+        clearAudio();
+      });
+
+      recordToggle.addEventListener('click', async () => {
+        if (!navigator.mediaDevices || !window.MediaRecorder) {
+          audioStatus.textContent = 'Запись аудио не поддерживается в этом браузере';
+          return;
+        }
+
+        if (isRecording && mediaRecorder) {
+          mediaRecorder.stop();
+          recordToggle.textContent = 'Записать аудио';
+          audioStatus.textContent = 'Обрабатываем запись...';
+          isRecording = false;
+          return;
+        }
+
+        try {
+          clearAudio();
+          stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+          mediaRecorder = new MediaRecorder(stream);
+          recordedChunks = [];
+
+          mediaRecorder.addEventListener('dataavailable', (event) => {
+            if (event.data.size > 0) {
+              recordedChunks.push(event.data);
+            }
+          });
+
+          mediaRecorder.addEventListener('stop', () => {
+            const blob = new Blob(recordedChunks, { type: mediaRecorder.mimeType || 'audio/webm' });
+            const extension = blob.type.includes('ogg') ? 'ogg' : 'webm';
+            const file = new File([blob], 'voice-message.' + extension, { type: blob.type });
+            showAudio(file, 'Запись готова. Можно прослушать или перезаписать.');
+            stopStream();
+          });
+
+          mediaRecorder.start();
+          isRecording = true;
+          recordToggle.textContent = 'Остановить запись';
+          audioStatus.textContent = 'Идёт запись... Нажмите ещё раз, чтобы остановить.';
+        } catch (error) {
+          audioStatus.textContent = 'Не удалось получить доступ к микрофону';
+          stopStream();
+          isRecording = false;
+          recordToggle.textContent = 'Записать аудио';
+        }
+      });
+
+      form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+
+        if (APPS_SCRIPT_URL === 'PASTE_YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE') {
+          setFormStatus('Укажите URL веб-приложения Google Apps Script в коде формы.', 'error');
+          return;
+        }
+
+        const formData = new FormData(form);
+        const bear = formData.get('bear');
+        const name = formData.get('name');
+        const contact = formData.get('contact');
+
+        submitButton.disabled = true;
+        setFormStatus('Отправляем заявку...', 'loading');
+
+        try {
+          const payload = {
+            name: String(name || ''),
+            contact: String(contact || ''),
+            bear: String(bear || ''),
+            audio_name: '',
+            audio_type: '',
+            audio_content: ''
+          };
+
+          if (currentAudioFile) {
+            if (currentAudioFile.size > MAX_AUDIO_SIZE_BYTES) {
+              throw new Error('Аудиофайл слишком большой для отправки через форму. Пожалуйста, выберите запись короче.');
+            }
+
+            payload.audio_name = currentAudioFile.name;
+            payload.audio_type = currentAudioFile.type || 'audio/webm';
+            payload.audio_content = await fileToBase64(currentAudioFile);
+          }
+
+          await submitViaHiddenForm(payload);
+
+          setFormStatus('Заявка отправлена. Скоро администратор свяжется с вами.', 'success');
+          form.reset();
+          clearAudio();
+          updateBearState('Ютик');
+          
+
+          submitButton.disabled = false;
+        } catch (error) {
+          submitButton.disabled = false;
+          setFormStatus(error instanceof Error ? error.message : 'Не удалось отправить заявку. Попробуйте ещё раз.', 'error');
+        }
+      });
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && modal.classList.contains('is-open')) {
+          closeModal();
+        }
+      });
+
+      updateBearState('Ютик');
+    })();
+  </script>
 </body>
 
 </html>
