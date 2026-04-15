@@ -458,6 +458,14 @@ main {
     margin-bottom: 16px;
 }
 
+.about-chips {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 18px;
+}
+
 .about-highlight {
     background: linear-gradient(155deg, rgba(255, 234, 215, 0.96), rgba(242, 220, 196, 0.92));
     padding: 40px;
