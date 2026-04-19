@@ -477,7 +477,21 @@
         try {
           clearAudio();
           stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-          mediaRecorder = new MediaRecorder(stream);
+          
+          const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+          let mimeType = 'audio/webm';
+          if (isSafari) {
+            mimeType = 'audio/mp4';
+            if (!MediaRecorder.isTypeSupported(mimeType)) {
+              mimeType = 'audio/x-m4a';
+            }
+            if (!MediaRecorder.isTypeSupported(mimeType)) {
+              mimeType = 'audio/mp4';
+            }
+          }
+          
+          const options = isSafari ? { mimeType } : undefined;
+          mediaRecorder = new MediaRecorder(stream, options);
           recordedChunks = [];
 
           mediaRecorder.addEventListener('dataavailable', (event) => {
@@ -487,8 +501,8 @@
           });
 
           mediaRecorder.addEventListener('stop', () => {
-            const blob = new Blob(recordedChunks, { type: mediaRecorder.mimeType || 'audio/webm' });
-            const extension = blob.type.includes('ogg') ? 'ogg' : 'webm';
+            const blob = new Blob(recordedChunks, { type: mediaRecorder.mimeType || 'audio/mp4' });
+            const extension = blob.type.includes('mp4') || blob.type.includes('m4a') ? 'm4a' : 'webm';
             const file = new File([blob], 'voice-message.' + extension, { type: blob.type });
             showAudio(file, 'Запись готова. Можно прослушать или перезаписать.');
             stopStream();
