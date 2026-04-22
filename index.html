@@ -74,10 +74,10 @@
               <img src="images/logo-wordmark.webp" alt="Логотип YouToys">
             </div>
             <div class="hero-card hero-card-main">
-              <img src="images/youtoys-box-yuta.webp" alt="Фирменная коробка YouToys" loading="eager">
+              <img src="images/preview.webp" alt="Фирменная коробка YouToys" loading="eager">
             </div>
             <div class="hero-card hero-card-accent">
-              <img src="images/youtoys-box-classic.webp" alt="Фирменная коробка YouToys" loading="eager">
+              <img src="images/preview_mini.webp" alt="Фирменная коробка YouToys" loading="eager">
             </div>
             <div class="hero-note">
               <strong>Свой голос. Своя история.</strong>
@@ -97,9 +97,9 @@
           <img src="images/logo-wordmark.webp" alt="Фирменный логотип YouToys" class="about-logo" loading="lazy">
         </div>
         <div class="about-text">
-          <h2 id="about-title">YouToys — уникальная игрушка, которая сохранится навсегда</h2>
-          <p>Твоя единственная и неповторимая… Игрушка</p>
-          <p>Создай своего медведя! Юта или Ютик — собери и подари со своим голосом и со своим нарядом.</p>
+          <h2 id="about-title">Твоя единственная и неповторимая… игрушка</h2>
+          <p>YouToys - уникальная игрушка, которая сохранится навсегда!</p>
+          <p>Создай своего медведя, выбрав персонажа и наделив его своим аудио</p>
         </div>
       </div>
     </section>
@@ -127,45 +127,67 @@
           <article class="product-card">
             <div class="product-visual">
               <div class="product-note">фирменная упаковка</div>
-              <div class="product-photo-wrap">
-                <img class="product-photo" src="images/youtoys-box-yutik.webp"
-                  alt="Фирменная упаковка YouToys для игрушки Ютик" loading="lazy">
+              <div class="product-photo-slider" data-slider="yutik">
+                <div class="product-photo-slider-inner">
+                  <div class="product-photo-slide">
+                    <img src="images/utic_1.webp"
+                      alt="Фирменная упаковка YouToys для игрушки Ютик" loading="lazy" draggable="false">
+                  </div>
+                  <div class="product-photo-slide">
+                    <img src="images/utic_2.webp"
+                      alt="Мягкий медвежонок Ютик" loading="lazy" draggable="false">
+                  </div>
+                </div>
+              </div>
+              <div class="product-slider-nav" data-slider="yutik">
+                <button type="button" class="slider-dot is-active" aria-label="Фото 1"></button>
+                <button type="button" class="slider-dot" aria-label="Фото 2"></button>
               </div>
             </div>
             <h3 class="product-name">Ютик</h3>
             <p class="product-description">Мягкий медвежонок, который хранит ваши эмоции и голос. Его объятия согревают
-              и создают воспоминания, оставаясь с вами на долгие годы.</p>
+              и создают воспоминания, оставаясь с вами на долгие годы</p>
             <a href="#order-modal" class="btn product-cta" data-bear="Ютик" data-open-order>Купить Ютика</a>
           </article>
 
           <article class="product-card">
             <div class="product-visual">
               <div class="product-note">фирменная упаковка</div>
-              <div class="product-photo-wrap">
-                <img class="product-photo" src="images/youtoys-box-yuta.webp"
-                  alt="Фирменная упаковка YouToys для игрушки Юта" loading="lazy">
+              <div class="product-photo-slider" data-slider="yuta">
+                <div class="product-photo-slider-inner">
+                  <div class="product-photo-slide">
+                    <img src="images/uta_1.webp"
+                      alt="Фирменная упаковка YouToys для игрушки Юта" loading="lazy" draggable="false">
+                  </div>
+                  <div class="product-photo-slide">
+                    <img src="images/uta_2.webp"
+                      alt="Мягкая медведица Юта" loading="lazy" draggable="false">
+                  </div>
+                </div>
+              </div>
+              <div class="product-slider-nav" data-slider="yuta">
+                <button type="button" class="slider-dot is-active" aria-label="Фото 1"></button>
+                <button type="button" class="slider-dot" aria-label="Фото 2"></button>
               </div>
             </div>
             <h3 class="product-name">Юта</h3>
             <p class="product-description">Нежная медведица, в которой оживают ваши воспоминания. Мягкая и ласковая, она
-              станет уникальным подарком и хранителем радостных моментов.</p>
+              станет уникальным подарком и хранителем радостных моментов</p>
             <a href="#order-modal" class="btn product-cta" data-bear="Юта" data-open-order>Купить Юту</a>
           </article>
         </div>
-      </div>
-    </section>
 
-    <section class="telegram-section" aria-labelledby="telegram-title">
-      <div class="container">
-        <h2 id="telegram-title">Свяжитесь с нами</h2>
-        <p class="note">Наш менеджер всегда рад ответить на любые вопросы или принять ваш заказ</p>
-        <a href="https://t.me/anbagaewa" class="telegram-cta" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="currentColor">
-            <path
-              d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.295-.6.295l.213-3.053 5.56-5.023c.242-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.64-.203-.658-.64.135-.954l11.566-4.458c.538-.196 1.006.128.828.94z" />
-          </svg>
-          Telegram
-        </a>
+        <div class="telegram-section" aria-labelledby="telegram-title">
+          <h2 id="telegram-title">Свяжитесь с нами</h2>
+          <p class="note">Наш менеджер всегда рад ответить на любые вопросы или принять ваш заказ</p>
+          <a href="https://t.me/anbagaewa" class="telegram-cta" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.295-.6.295l.213-3.053 5.56-5.023c.242-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.64-.203-.658-.64.135-.954l11.566-4.458c.538-.196 1.006.128.828.94z" />
+            </svg>
+            Telegram
+          </a>
+        </div>
       </div>
     </section>
   </main>
@@ -578,6 +600,102 @@
       });
 
       updateBearState('Ютик');
+
+const initSlider = (sliderId) => {
+        const slider = document.querySelector(`.product-photo-slider[data-slider="${sliderId}"]`);
+        const nav = document.querySelector(`.product-slider-nav[data-slider="${sliderId}"]`);
+        if (!slider || !nav) return;
+
+        const inner = slider.querySelector('.product-photo-slider-inner');
+        const slides = slider.querySelectorAll('.product-photo-slide');
+        const dots = nav.querySelectorAll('.slider-dot');
+        let currentIndex = 0;
+        let startX = 0;
+        let isDragging = false;
+        let baseX = 0;
+
+        const goToSlide = (index) => {
+          currentIndex = index;
+          if (inner) {
+            inner.style.transition = '';
+            inner.style.transform = `translateX(-${index * 100}%)`;
+          }
+          dots.forEach((dot, i) => dot.classList.toggle('is-active', i === index));
+        };
+
+        dots.forEach((dot, i) => {
+          dot.addEventListener('click', () => goToSlide(i));
+        });
+
+        slider.addEventListener('touchstart', (e) => {
+          startX = e.touches[0].clientX;
+          baseX = currentIndex * 100;
+          isDragging = true;
+          if (inner) inner.style.transition = 'none';
+        }, { passive: true });
+
+        slider.addEventListener('touchmove', (e) => {
+          if (!isDragging || !inner) return;
+          const diff = e.touches[0].clientX - startX;
+          const slideWidth = slider.offsetWidth;
+          const percent = (diff / slideWidth) * 100;
+          inner.style.transform = `translateX(calc(-${baseX}% + ${percent}%))`;
+        }, { passive: true });
+
+        slider.addEventListener('touchend', (e) => {
+          if (!isDragging || !inner) return;
+          isDragging = false;
+          if (inner) inner.style.transition = 'transform 0.25s cubic-bezier(0.25, 0.1, 0.25, 1)';
+          const diff = e.changedTouches[0].clientX - startX;
+          const slideWidth = slider.offsetWidth;
+          if (Math.abs(diff) > slideWidth * 0.2) {
+            if (diff > 0) goToSlide((currentIndex - 1 + slides.length) % slides.length);
+            else goToSlide((currentIndex + 1) % slides.length);
+          } else {
+            goToSlide(currentIndex);
+          }
+        });
+
+        slider.addEventListener('mousedown', (e) => {
+          e.preventDefault();
+          startX = e.clientX;
+          baseX = currentIndex * 100;
+          isDragging = true;
+          if (inner) inner.style.transition = 'none';
+        });
+
+        slider.addEventListener('mousemove', (e) => {
+          if (!isDragging || !inner) return;
+          const diff = e.clientX - startX;
+          const slideWidth = slider.offsetWidth;
+          const percent = (diff / slideWidth) * 100;
+          inner.style.transform = `translateX(calc(-${baseX}% + ${percent}%))`;
+        });
+
+        slider.addEventListener('mouseup', (e) => {
+          if (!isDragging || !inner) return;
+          isDragging = false;
+          if (inner) inner.style.transition = 'transform 0.25s cubic-bezier(0.25, 0.1, 0.25, 1)';
+          const diff = e.clientX - startX;
+          const slideWidth = slider.offsetWidth;
+          if (Math.abs(diff) > slideWidth * 0.2) {
+            if (diff > 0) goToSlide((currentIndex - 1 + slides.length) % slides.length);
+            else goToSlide((currentIndex + 1) % slides.length);
+          } else {
+            goToSlide(currentIndex);
+          }
+        });
+
+        slider.addEventListener('mouseleave', () => {
+          if (!isDragging || !inner) return;
+          isDragging = false;
+          if (inner) inner.style.transition = 'transform 0.25s cubic-bezier(0.25, 0.1, 0.25, 1)';
+          goToSlide(currentIndex);
+        });
+      };
+
+      initSlider('yutik');
+      initSlider('yuta');
     })();
   </script>
 </body>
