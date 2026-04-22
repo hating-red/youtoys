@@ -19,6 +19,7 @@
   <link rel="preload" as="font" href="https://cdn.jsdelivr.net/gh/StefanPeev/Involve@main/fonts/TTF/Involve-Regular.ttf" type="font/ttf" crossorigin>
   <link rel="preload" as="font" href="https://cdn.jsdelivr.net/gh/StefanPeev/Involve@main/fonts/TTF/Involve-Bold.ttf" type="font/ttf" crossorigin>
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
 
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://youtoys.ru/">
@@ -40,6 +41,7 @@
 </head>
 
 <body>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <header role="banner">
     <div class="container header-content">
       <a href="/" class="logo" aria-label="YouToys">
@@ -127,22 +129,20 @@
           <article class="product-card">
             <div class="product-visual">
               <div class="product-note">фирменная упаковка</div>
-              <div class="product-photo-slider" data-slider="yutik">
-                <div class="product-photo-slider-inner">
-                  <div class="product-photo-slide">
-                    <img src="images/utic_1.webp"
-                      alt="Фирменная упаковка YouToys для игрушки Ютик" loading="lazy" draggable="false">
-                  </div>
-                  <div class="product-photo-slide">
-                    <img src="images/utic_2.webp"
-                      alt="Мягкий медвежонок Ютик" loading="lazy" draggable="false">
+<div class="swiper" data-slider="yutik">
+                  <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                      <img src="images/utic_1.webp" alt="Фирменная упаковка YouToys для игрушки Ютик" loading="lazy">
+                    </div>
+                    <div class="swiper-slide">
+                      <img src="images/utic_2.webp" alt="Мягкий медвежонок Ютик" loading="lazy">
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div class="product-slider-nav" data-slider="yutik">
-                <button type="button" class="slider-dot is-active" aria-label="Фото 1"></button>
-                <button type="button" class="slider-dot" aria-label="Фото 2"></button>
-              </div>
+                <div class="product-slider-nav" data-slider="yutik">
+                  <button type="button" class="slider-dot is-active" aria-label="Фото 1"></button>
+                  <button type="button" class="slider-dot" aria-label="Фото 2"></button>
+                </div>
             </div>
             <h3 class="product-name">Ютик</h3>
             <p class="product-description">Мягкий медвежонок, который хранит ваши эмоции и голос. Его объятия согревают
@@ -153,22 +153,20 @@
           <article class="product-card">
             <div class="product-visual">
               <div class="product-note">фирменная упаковка</div>
-              <div class="product-photo-slider" data-slider="yuta">
-                <div class="product-photo-slider-inner">
-                  <div class="product-photo-slide">
-                    <img src="images/uta_1.webp"
-                      alt="Фирменная упаковка YouToys для игрушки Юта" loading="lazy" draggable="false">
-                  </div>
-                  <div class="product-photo-slide">
-                    <img src="images/uta_2.webp"
-                      alt="Мягкая медведица Юта" loading="lazy" draggable="false">
+              <div class="swiper" data-slider="yuta">
+                  <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                      <img src="images/uta_1.webp" alt="Фирменная упаковка YouToys для игрушки Юта" loading="lazy">
+                    </div>
+                    <div class="swiper-slide">
+                      <img src="images/uta_2.webp" alt="Мягкая медведица Юта" loading="lazy">
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div class="product-slider-nav" data-slider="yuta">
-                <button type="button" class="slider-dot is-active" aria-label="Фото 1"></button>
-                <button type="button" class="slider-dot" aria-label="Фото 2"></button>
-              </div>
+                <div class="product-slider-nav" data-slider="yuta">
+                  <button type="button" class="slider-dot is-active" aria-label="Фото 1"></button>
+                  <button type="button" class="slider-dot" aria-label="Фото 2"></button>
+                </div>
             </div>
             <h3 class="product-name">Юта</h3>
             <p class="product-description">Нежная медведица, в которой оживают ваши воспоминания. Мягкая и ласковая, она
@@ -599,103 +597,31 @@
         }
       });
 
-      updateBearState('Ютик');
+updateBearState('Ютик');
 
-const initSlider = (sliderId) => {
-        const slider = document.querySelector(`.product-photo-slider[data-slider="${sliderId}"]`);
-        const nav = document.querySelector(`.product-slider-nav[data-slider="${sliderId}"]`);
-        if (!slider || !nav) return;
+      const swiperYutik = new Swiper(document.querySelector('.swiper[data-slider="yutik"]'), {
+        loop: true,
+      });
+      const swiperYuta = new Swiper(document.querySelector('.swiper[data-slider="yuta"]'), {
+        loop: true,
+      });
 
-        const inner = slider.querySelector('.product-photo-slider-inner');
-        const slides = slider.querySelectorAll('.product-photo-slide');
+      document.querySelectorAll('.product-slider-nav').forEach((nav) => {
+        const sliderId = nav.dataset.slider;
         const dots = nav.querySelectorAll('.slider-dot');
-        let currentIndex = 0;
-        let startX = 0;
-        let isDragging = false;
-        let baseX = 0;
-
-        const goToSlide = (index) => {
-          currentIndex = index;
-          if (inner) {
-            inner.style.transition = '';
-            inner.style.transform = `translateX(-${index * 100}%)`;
-          }
-          dots.forEach((dot, i) => dot.classList.toggle('is-active', i === index));
-        };
+        const swiper = sliderId === 'yutik' ? swiperYutik : swiperYuta;
 
         dots.forEach((dot, i) => {
-          dot.addEventListener('click', () => goToSlide(i));
+          dot.addEventListener('click', () => {
+            swiper.slideToLoop(i);
+          });
         });
 
-        slider.addEventListener('touchstart', (e) => {
-          startX = e.touches[0].clientX;
-          baseX = currentIndex * 100;
-          isDragging = true;
-          if (inner) inner.style.transition = 'none';
-        }, { passive: true });
-
-        slider.addEventListener('touchmove', (e) => {
-          if (!isDragging || !inner) return;
-          const diff = e.touches[0].clientX - startX;
-          const slideWidth = slider.offsetWidth;
-          const percent = (diff / slideWidth) * 100;
-          inner.style.transform = `translateX(calc(-${baseX}% + ${percent}%))`;
-        }, { passive: true });
-
-        slider.addEventListener('touchend', (e) => {
-          if (!isDragging || !inner) return;
-          isDragging = false;
-          if (inner) inner.style.transition = 'transform 0.25s cubic-bezier(0.25, 0.1, 0.25, 1)';
-          const diff = e.changedTouches[0].clientX - startX;
-          const slideWidth = slider.offsetWidth;
-          if (Math.abs(diff) > slideWidth * 0.2) {
-            if (diff > 0) goToSlide((currentIndex - 1 + slides.length) % slides.length);
-            else goToSlide((currentIndex + 1) % slides.length);
-          } else {
-            goToSlide(currentIndex);
-          }
+        swiper.on('slideChange', () => {
+          const realIndex = swiper.realIndex;
+          dots.forEach((d, i) => d.classList.toggle('is-active', i === realIndex));
         });
-
-        slider.addEventListener('mousedown', (e) => {
-          e.preventDefault();
-          startX = e.clientX;
-          baseX = currentIndex * 100;
-          isDragging = true;
-          if (inner) inner.style.transition = 'none';
-        });
-
-        slider.addEventListener('mousemove', (e) => {
-          if (!isDragging || !inner) return;
-          const diff = e.clientX - startX;
-          const slideWidth = slider.offsetWidth;
-          const percent = (diff / slideWidth) * 100;
-          inner.style.transform = `translateX(calc(-${baseX}% + ${percent}%))`;
-        });
-
-        slider.addEventListener('mouseup', (e) => {
-          if (!isDragging || !inner) return;
-          isDragging = false;
-          if (inner) inner.style.transition = 'transform 0.25s cubic-bezier(0.25, 0.1, 0.25, 1)';
-          const diff = e.clientX - startX;
-          const slideWidth = slider.offsetWidth;
-          if (Math.abs(diff) > slideWidth * 0.2) {
-            if (diff > 0) goToSlide((currentIndex - 1 + slides.length) % slides.length);
-            else goToSlide((currentIndex + 1) % slides.length);
-          } else {
-            goToSlide(currentIndex);
-          }
-        });
-
-        slider.addEventListener('mouseleave', () => {
-          if (!isDragging || !inner) return;
-          isDragging = false;
-          if (inner) inner.style.transition = 'transform 0.25s cubic-bezier(0.25, 0.1, 0.25, 1)';
-          goToSlide(currentIndex);
-        });
-      };
-
-      initSlider('yutik');
-      initSlider('yuta');
+      });
     })();
   </script>
 </body>
